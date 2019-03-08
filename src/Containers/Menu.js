@@ -12,7 +12,7 @@ class Menu extends Component {
     super(props);
     this.state = {
       category: "",
-      dishes: '',
+      dishes: "",
     }
   }
 
@@ -25,35 +25,28 @@ class Menu extends Component {
     const { dishes, categories } = this.props;
     return (
       <Row>
-        <Col m={3} className="hide-on-small-only" style={styles.flexContainer}>
-          <Button
-            onClick={() => { this.setState({ category: "" }) }}
-            waves="orange"
-            className="orange darken-3" style={styles.categoryButton} >
-              Show All
-          </Button>
-          { this.renderCategories() }
+        <Col m={4} style={styles.flexContainer}>
+          { this.renderCategories(categories) }
         </Col>
-        <Col s={12} m={9} style={styles.scrollable}>
-          <div style={styles.flexContainer}>
-            <DishList
-              currentCategory={this.state.category}
-              categories={categories}
-              dishes={this.state.dishes}
-              defaultDishes={dishes} />
-          </div>
+        <Col m={8} style={styles.scrollable}>
+          <h5 className="center-align">{this.state.category.category_type}</h5>
+          <DishList
+            dishes={this.state.dishes}
+            defaultDishes={dishes}
+            currentCategory={this.state.category.category_type}/>
         </Col>
       </Row>
     );
   }
 
-  renderCategories = () => {
-    return this.props.categories.map(category => {
+  renderCategories = (categories) => {
+    return categories.map(category => {
       return (
         <Button
           onClick={() => { this.handleClick(category) }}
           waves="orange"
-          className="orange darken-3" style={styles.categoryButton} >
+          className="orange darken-3"
+          style={styles.categoryButton}>
             {category.category_type}
         </Button>
       )
@@ -62,7 +55,6 @@ class Menu extends Component {
 
   handleClick = (category) => {
     let dishes = this.props.dishes.filter(dish => dish.category_id === category.id );
-    console.log("DISHES", dishes);
     return this.setState({
       category: category,
       dishes: dishes });

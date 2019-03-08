@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import logo from './logo.svg';
 import './App.css';
@@ -8,6 +8,8 @@ import './App.css';
 import Menu from './Containers/Menu';
 import Admin from './Containers/Admin';
 import Home from './Containers/Home';
+import AuthorizedRoute from './Utilities/AuthorizedRoute';
+import SignIn from './Containers/Forms/SignIn';
 
 class App extends Component {
 
@@ -18,25 +20,29 @@ class App extends Component {
           exact
           path="/"
           component={Home}
-          // render={ props => <Menu {...props} /> }
+        />
+        <AuthorizedRoute
+          path="/admin"
+          isSignedIn={this.props.auth}
+          component={Admin}
         />
         <Route
           path="/menu"
           component={Menu}
-          // render={ props => <Menu {...props} /> }
         />
         <Route
-          path="/admin"
-          component={Admin}
+          path="/signIn"
+          component={SignIn}
         />
       </Switch>
     )
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     categories: null
-//   }
-// }
-export default connect(null, null)(App);
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(App));

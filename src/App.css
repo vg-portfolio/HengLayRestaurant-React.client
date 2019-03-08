@@ -1,10 +1,26 @@
 body {
   background-color: #b0bec5;
 }
+.sign-in-container {
+  display: flex;
+  align-content: center;
+
+}
+.henglay-input {
+  /* margin-bottom: 3rem; */
+}
+/* .henglay-checkbox {
+  margin-bottom: 15rem;
+  padding-bottom: 10rem;
+} */
+.modal-content {
+  height: 100%;
+}
 
 .Main-theme {
   background-color: #c62828;
 }
+
 .Button-theme {
   background-color: #ef6c00;
 }

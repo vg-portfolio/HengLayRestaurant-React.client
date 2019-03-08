@@ -26,3 +26,47 @@ export const fetchAllDishes= () => async dispatch => {
     })
   })
 }
+
+export const createDish = dish => async (dispatch, getState) => {
+  const token = getState().auth.user.token;
+  return api.post('/dishes',
+    { dish },
+    {
+      headers: {
+        "Authorization": `Token token=${token}`
+      }
+    })
+  .then((response) => {
+    dispatch({
+      type: 'CREATE_DISH',
+      payload: response.data.dish
+    })
+  })
+}
+
+export const createCategory = category => async (dispatch, getState) => {
+  const token = getState().auth.user.token;
+  return api.post('/categories',
+    { category },
+    {
+      headers: {
+        "Authorization": `Token token=${token}`
+      }
+    })
+  .then((response) => {
+    dispatch({
+      type: 'CREATE_CATEGORY',
+      payload: response.data.category
+    })
+  })
+}
+
+export const signIn = credentials => async dispatch => {
+  return api.post('/sign-in', {credentials})
+  .then((response) => {
+    dispatch({
+      type: 'SIGN_IN',
+      payload: response.data
+    })
+  })
+}

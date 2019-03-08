@@ -2,17 +2,15 @@ import React from 'react';
 import { Navbar, NavItem, Icon } from 'react-materialize';
 
 import '../index.css';
-
+const Logo = <img src="../images/navbar-logo.png" />;
 const Navigation = () => (
-  <Navbar style={style} className="Main-theme" brand='logo' right>
-    <NavItem href='get-started.html'><Icon>search</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>view_module</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>refresh</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>more_vert</Icon></NavItem>
+  <Navbar style={style} brand="Heng Lay" right className="Main-theme">
+    <NavItem><Icon>search</Icon></NavItem>
   </Navbar>
 );
 
 const style = {
-  marginBottom: 10
+  marginBottom: 10,
+  paddingLeft: 50
 }
 export default Navigation;
