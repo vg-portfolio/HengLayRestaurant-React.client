@@ -11,6 +11,6 @@ const Navigation = () => (
 
 const style = {
   marginBottom: 10,
-  paddingLeft: 50
+  paddingLeft: 5
 }
 export default Navigation;

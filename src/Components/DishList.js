@@ -43,8 +43,8 @@ const renderDishes = (dishes) => {
            title={dish.name}
         >
            <Row>
-             <Col s={10}>{dish.description}</Col>
-             <Col s={2}>
+             <Col s={9}>{dish.description}</Col>
+             <Col s={3}>
                {renderPrice(dish)}
              </Col>
            </Row>

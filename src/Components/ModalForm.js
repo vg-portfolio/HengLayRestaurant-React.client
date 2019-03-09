@@ -19,9 +19,11 @@ const ModalForm = ({
           <Icon>close</Icon>
         </Button>
       </span>,
-      <span className="center-align">{modalTitle}</span>
+      <p className="center">{modalTitle}</p>
     ]}>
-    { displayedContent }
+    <div className="container">
+      { displayedContent }
+    </div>
   </Modal>
 );
 

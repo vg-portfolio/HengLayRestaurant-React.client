@@ -6,13 +6,24 @@ body {
   align-content: center;
 
 }
-.henglay-input {
-  /* margin-bottom: 3rem; */
+#categoryListModal .modal-content {
+  height: 100%;
 }
-/* .henglay-checkbox {
-  margin-bottom: 15rem;
-  padding-bottom: 10rem;
-} */
+#categoryListModal .modal-footer {
+  height: 0 !important;
+}
+#categoryListModal .modal-content button{
+  width: 100%;
+}
+#categoryListModal .modal-content #modalCloseButton{
+  margin-top: 2rem;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  padding: 1;
+  text-align: center;
+  background-color: red;
+}
 .modal-content {
   height: 100%;
 }

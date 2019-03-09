@@ -94,7 +94,7 @@ class AddDish extends Component {
     return (
       <Row>
         <form onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
-        <Col s={8}>
+        <Col s={12} m={8}>
           <Field
             name="name"
             placeholder="Title of Dish"
@@ -108,9 +108,8 @@ class AddDish extends Component {
             component={this.renderTextArea}
             type="text"
             />
-          <Button className={this.props.invalid ? "disabled" : "modal-close"} style={{ width: '100%' }} type="submit">Submit</Button>
         </Col>
-        <Col s={4}>
+        <Col s={12} m={4}>
           <Field
             name="category_id"
             placeholder="Category"
@@ -146,6 +145,7 @@ class AddDish extends Component {
             type="checkbox"
             />
         </Col>
+        <Button className={this.props.invalid ? "disabled" : "modal-close"} style={{ width: '100%', marginTop: '1.5rem' }} type="submit">Submit</Button>
         </form>
       </Row>
     );
