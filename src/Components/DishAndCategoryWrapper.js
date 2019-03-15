@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategories, fetchAllDishes } from '../actions';
 
@@ -20,15 +20,23 @@ class DishAndCategoryWrapper extends Component {
   }
 
   render() {
-    const { dishes, categories, isAdmin, showDishForm, showCategoryForm, openDishModal, openCategoryModal } = this.props;
+    const {
+      dishes,
+      categories,
+      isAdmin,
+      showDishForm,
+      showCategoryForm,
+      openDishModal,
+      openCategoryModal
+    } = this.props;
     return (
       <Row>
-        <Col m={4} style={styles.flexContainer} className="hide-on-small-only">
+        <Col m={3} style={styles.flexContainer} className="hide-on-small-only">
           { this.renderAdminButtons(isAdmin, showDishForm, showCategoryForm)}
           { this.renderCategories(categories) }
         </Col>
-        <Col s={12} m={8} style={styles.scrollable}>
-          <h5 className="center-align">{this.state.category.category_type}</h5>
+        <Col s={12} m={9} style={styles.scrollable}>
+          <h5 className="henglay-font center-align">{this.state.category.category_type}</h5>
           <DishList
             dishes={this.state.dishes}
             defaultDishes={dishes}
@@ -41,7 +49,7 @@ class DishAndCategoryWrapper extends Component {
               isAdmin={isAdmin}
               openCategoryModal={openCategoryModal}
               openDishModal={openDishModal}
-              onClick={() => this.setState({     showMobileCategoryList: true })}/>
+              onClick={() => this.setState({ showMobileCategoryList: true })}/>
           : <FAB
               onClick={() => this.setState({ showMobileCategoryList: true })}/>
           }
@@ -55,9 +63,11 @@ class DishAndCategoryWrapper extends Component {
 
   renderCategoryModalList = (categories) => {
     if (this.state.showMobileCategoryList) {
-      console.log("STATE", this.state.showMobileCategoryList)
-      return <CategoriesModalView modalContent={this.renderCategories(categories)}
-      closeModal={this.closeModal}/>
+      return (
+        <CategoriesModalView
+          modalContent={this.renderCategories(categories)}
+          closeModal={this.closeModal} />
+      )
     }
   }
 
@@ -107,8 +117,15 @@ class DishAndCategoryWrapper extends Component {
 }
 
 const styles = {
+  callButton: {
+    right: "0",
+    top: "0",
+    position: 'fixed',
+    zIndex: '99'
+  },
   flexContainer: {
     display: 'flex',
+    marginTop: '1rem',
     flexDirection: 'column',
   },
   stickyContainer: {

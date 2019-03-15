@@ -13,14 +13,17 @@ const FAB = ({isAdmin, onClick, openCategoryModal, openDishModal}) => (
           waves='light'
           icon='add'>
             <Button floating
+              className='red tooltipped'
+              icon="library_add"
+              onClick={openDishModal}
+              data-position="left"
+              data-tooltip="I am a tooltip" />
+            <Button floating
               className='red'
               icon="playlist_add"
               onClick={openCategoryModal} />
             <Button floating
-              className='red'
-              icon="library_add"
-              onClick={openDishModal} />
-            <Button floating
+              style={styles.categoryFAB}
               icon='format_align_justify'
               className='orange darken-1'
               onClick={onClick} />
@@ -28,14 +31,17 @@ const FAB = ({isAdmin, onClick, openCategoryModal, openDishModal}) => (
       : <Button
           style={styles.FAB}
           onClick={onClick}
-          large className='red'
+          large className='orange darken-3'
           waves='light'
-          icon='add' />
+          icon='format_align_justify' />
     }
   </div>
 );
 
 const styles = {
+  categoryFAB: {
+    marginTop: '2rem'
+  },
   FAB: {
     textAlign: 'center',
     padding: 1,

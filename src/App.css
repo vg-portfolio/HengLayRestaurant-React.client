@@ -27,7 +27,10 @@ body {
 .modal-content {
   height: 100%;
 }
-
+.henglay-font {
+  font-family: 'Kaushan Script';
+  font-size: 2em;
+}
 .Main-theme {
   background-color: #c62828;
 }

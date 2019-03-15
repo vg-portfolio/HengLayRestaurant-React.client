@@ -2,7 +2,13 @@ import React from 'react';
 import CurrencyFormat from 'react-currency-format';
 import { Card, Text, Button, Row, Col } from 'react-materialize';
 
-const DishList = ({dishes, currentCategory, defaultDishes, categories, adminView}) => (
+const DishList = ({
+  dishes,
+  currentCategory,
+  defaultDishes,
+  categories,
+  adminView
+}) => (
   <div>
     {
       adminView
@@ -19,10 +25,7 @@ const renderAdminDishes = (dishes) => {
       return (
         <div key={dish.id}>
           <Button >Edit</Button>
-          <Card className=''
-             textClassName=''
-             title={dish.name}
-          >
+          <Card title={dish.name}>
             <Row>
               <Col s={10}>{dish.description}</Col>
               <Col s={2}>
@@ -38,10 +41,7 @@ const renderAdminDishes = (dishes) => {
 const renderDishes = (dishes) => {
     return dishes.map(dish => {
       return (
-        <Card className=''
-           textClassName=''
-           title={dish.name}
-        >
+        <Card title={dish.name} >
            <Row>
              <Col s={9}>{dish.description}</Col>
              <Col s={3}>

@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
-import { Field, Form, reduxForm } from 'redux-form';
+import { Field, Form, reduxForm, change } from 'redux-form';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../../actions';
 
 import { createNumberMask } from 'redux-form-input-masks';
 import { Row, Button, Input, Icon, Col } from 'react-materialize';
 
+import FileUploader from "react-firebase-file-uploader";
+import firebase from '../../Firebase';
+
 class AddDish extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      image: null,
+      url: "",
+      uploading: false,
+      progress: 0
+    }
+  }
 
   renderError = ({error, touched}) => {
     if (error && touched) {
@@ -74,7 +86,6 @@ class AddDish extends Component {
         </option>
       )
     })
-
     return (
       <Input s={12}
         type='select'
@@ -89,6 +100,36 @@ class AddDish extends Component {
       </Input>
     )
   }
+
+  renderUpload = ({ name, label, input, type}) => {
+    return (
+      <FileUploader
+        accept="image/*"
+        storageRef={firebase.storage().ref("menu_pics")}
+        onUploadStart={this.handleUploadStart}
+        onUploadSuccess={this.handleUploadSuccess}
+      />
+    )
+    // return <Input {...input} onChange={this.handleChange} value={this.state.image} type={type} label={label} s={12}/>
+  }
+  handleUploadStart = () => {
+    this.setState({uploading: true});
+  }
+  handleUploadSuccess = fileName => {
+    console.log(fileName);
+    firebase.storage().ref("menu_pics").child(fileName).getDownloadURL()
+      .then(url => {
+        this.setState({ url, uploading: false, progress: 100 });
+      })
+      .then(() => {
+        this.props.dispatch(change('addDish', 'image_url', this.state.url))
+      });
+      // .then(() => {
+      //   const db = firebase.firestore();
+      //   db.collection('images').doc("2").set({dish_id: 2, url: this.state.url })
+      // });
+  }
+  handleProgress = progress => this.setState({ progress });
 
   render() {
     return (
@@ -108,6 +149,21 @@ class AddDish extends Component {
             component={this.renderTextArea}
             type="text"
             />
+          <Field
+            name="image"
+            label="image"
+            component={this.renderUpload}
+            type="file"
+            />
+          <Row style={{marginLeft: '2rem'}}>
+            {this.state.url && <img style={{height: '50px'}} src={this.state.url}/>}
+            {
+              this.state.uploading &&
+              <div class="progress">
+                <div class="indeterminate"></div>
+              </div>
+            }
+          </Row>
         </Col>
         <Col s={12} m={4}>
           <Field

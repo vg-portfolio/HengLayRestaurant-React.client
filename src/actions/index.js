@@ -29,6 +29,8 @@ export const fetchAllDishes= () => async dispatch => {
 
 export const createDish = dish => async (dispatch, getState) => {
   const token = getState().auth.user.token;
+  console.log("DATA", dish);
+  debugger;
   return api.post('/dishes',
     { dish },
     {
