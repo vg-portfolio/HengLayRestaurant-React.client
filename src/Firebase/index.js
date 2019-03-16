@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/storage'
 import "firebase/firestore";
 var config = {
-  apiKey: "AIzaSyDEK3H9mm_mlLk5s6GbtquMmjqynMTnE-Y",
-  authDomain: "henglay-775ab.firebaseapp.com",
-  databaseURL: "https://henglay-775ab.firebaseio.com",
-  projectId: "henglay-775ab",
-  storageBucket: "henglay-775ab.appspot.com",
-  messagingSenderId: "238342746779"
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
 };
 
 firebase.initializeApp(config);
