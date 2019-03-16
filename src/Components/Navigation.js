@@ -23,7 +23,7 @@ const Navigation = () => (
         </div>
       </nav>
     </div>
-    <Button href="tel:9784584619" style={{width: "100%", marginTop: "1rem", position: 'fixed', zIndex: '999'}} className="hide-on-med-and-up orange darken-3 hoverable">Call (978)232-3322</Button>
+    <a href="tel:9784584619" style={{width: "100%", marginTop: "1rem", position: 'fixed', zIndex: '999'}} className="hide-on-med-and-up btn orange darken-3 hoverable">Call (978)232-3322</a>
   </Fragment>
 );
 
