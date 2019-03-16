@@ -18,12 +18,12 @@ const Navigation = () => (
           </ul>
           <ul id="nav-mobile" className="right hide-on-small-only">
             <li><NavLink to="/menu">Menu</NavLink></li>
-            <li className="right"><a href="tel:+1-978-967-9535" className="orange darken-3 hoverable btn">Call (978)232-3322</a></li>
+            <li className="right"><a href="tel:9784584619" className="orange darken-3 hoverable btn">Call (978)232-3322</a></li>
           </ul>
         </div>
       </nav>
     </div>
-    <Button href="tel:+1-978-967-9535" style={{width: "100%", marginTop: "1rem", position: 'fixed', zIndex: '999'}} className="hide-on-med-and-up orange darken-3 hoverable">Call (978)232-3322</Button>
+    <Button href="tel:9784584619" style={{width: "100%", marginTop: "1rem", position: 'fixed', zIndex: '999'}} className="hide-on-med-and-up orange darken-3 hoverable">Call (978)232-3322</Button>
   </Fragment>
 );
 
