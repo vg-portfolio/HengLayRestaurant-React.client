@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   // baseURL: "https://opentixapi.herokuapp.com/"
-  baseURL: "http://localhost:4741/"
+  baseURL: "https://heng-lay-menu-api.herokuapp.com/"
   //Place TOKEN in redux state instead
   //Relocate this auth header to somehwere else;
 });
