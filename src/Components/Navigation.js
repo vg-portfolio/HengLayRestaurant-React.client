@@ -1,28 +1,29 @@
 import React, { Fragment } from 'react';
 import { Navbar, NavItem, Icon, Button } from 'react-materialize';
+import { NavLink } from 'react-router-dom';
+import logo from '../images/navbar-logo.png';
 
 import '../index.css';
 
-const logo = <img style={{height: '4rem'}} src={window.location.origin + '/images/navbar-logo.png'} />
+const navbarLogo = <img style={{height: '4rem'}} src={logo} />
 
 const Navigation = () => (
-  // <Fragment>
-  //   <Navbar style={style} logo={logo} right className="Main-theme">
-  //     <a style={{width: "100%", marginTop: '1rem'}} href="tel:+1-978-967-9535" className="show-on-medium-and-up orange darken-3 hoverable btn">Call (978)232-3322</a>
-  //   </Navbar>
-  //   <Button style={{width: "100%"}} className="hide-on-med-and-up orange darken-3 hoverable">Call (978)232-3322</Button>
-  // </Fragment>
   <Fragment>
-    <nav style={style} className="Main-theme">
-      <div className="nav-wrapper">
-        <a href="#" className="brand-logo center">{logo}</a>
-        <ul id="nav-mobile" className="hide-on-med-and-down">
-          <li><a href="#">Menu</a></li>
-          <li className="right" style={{marginTop: '1rem'}}><a href="tel:+1-978-967-9535" className="show-on-medium-and-up orange darken-3 hoverable btn">Call (978)232-3322</a></li>
-        </ul>
-      </div>
-    </nav>
-    <Button style={{width: "100%", marginTop: "0.5rem"}} className="hide-on-med-and-up orange darken-3 hoverable">Call (978)232-3322</Button>
+    <div className="navbar-fixed">
+      <nav style={style} className="Main-theme">
+        <div className="nav-wrapper">
+          <NavLink to="/" className="brand-logo left">{navbarLogo}</NavLink>
+          <ul className="right hide-on-med-and-up">
+            <li><NavLink to="/menu">Menu</NavLink></li>
+          </ul>
+          <ul id="nav-mobile" className="right hide-on-small-only">
+            <li><NavLink to="/menu">Menu</NavLink></li>
+            <li className="right"><a href="tel:+1-978-967-9535" className="orange darken-3 hoverable btn">Call (978)232-3322</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <Button href="tel:+1-978-967-9535" style={{width: "100%", marginTop: "1rem", position: 'fixed', zIndex: '999'}} className="hide-on-med-and-up orange darken-3 hoverable">Call (978)232-3322</Button>
   </Fragment>
 );
 

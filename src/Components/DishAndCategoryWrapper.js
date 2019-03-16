@@ -30,7 +30,7 @@ class DishAndCategoryWrapper extends Component {
       openCategoryModal
     } = this.props;
     return (
-      <Row>
+      <Row id="menuContainer">
         <Col m={3} style={styles.flexContainer} className="hide-on-small-only">
           { this.renderAdminButtons(isAdmin, showDishForm, showCategoryForm)}
           { this.renderCategories(categories) }

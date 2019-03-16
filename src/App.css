@@ -1,10 +1,59 @@
 body {
+  /* background-color: white; */
   background-color: #b0bec5;
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0,0,0,0.5)
+  ),
+  url('images/gallery.png')
+  fixed
+  center;
+  background-size: 100%;
 }
+td {
+  padding: 0.2rem;
+  font-size: 1.4em;
+}
+td:first-child {
+  font-weight: 600;
+}
+#home-container {
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    rgba(0,0,0,0.3)
+  ),
+  url('images/bbq-chicken.jpg')
+  fixed
+  center;
+background-size: 100%;
+  padding-bottom: 5rem;
+/* height: 40rem; */
+text-align: center;
+
+}
+
+#contact-container {
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0,0,0,0.4)
+  ),
+  url('images/gallery.png')
+  fixed
+  center;
+  background-size: 100%;
+  text-align: center;
+}
+
+#footer {
+  background-color: #b71c1c;
+}
+
 .sign-in-container {
   display: flex;
   align-content: center;
-
 }
 #categoryListModal .modal-content {
   height: 100%;
@@ -32,9 +81,12 @@ body {
   font-size: 2em;
 }
 .Main-theme {
-  background-color: #c62828;
+  background-color: #b71c1c;
 }
-
+.nav-wrapper {
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
 .Button-theme {
   background-color: #ef6c00;
 }
@@ -46,4 +98,26 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+@media only screen and (max-width: 600px) {
+  #menuContainer {
+    padding-top: 2rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+    /*About Intro*/
+    #home-container {
+      background-size: cover;
+      /* height: 40rem; */
+    }
+
+    /* #henglay-title-khmer{
+      font-size: 2em;
+    }
+
+    #contact {
+      background-size: cover;
+      margin-bottom: 0;
+    } */
+
 }

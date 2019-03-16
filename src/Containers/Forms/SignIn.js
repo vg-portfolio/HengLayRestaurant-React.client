@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 import { Button, Card, Row, Col, Input, Icon } from 'react-materialize';
 
 class SignIn extends Component {
-
-  componentDidMount(){
-  }
 
   renderInput = ({label, type, input}) => {
     return (
@@ -37,34 +34,37 @@ class SignIn extends Component {
   }
 
   handleSignInSubmit = (data) => {
-    console.log("HANDLING SUBMIT SIGN IN FORM", data);
     this.props.signIn(data)
     .then(() => this.props.history.push("/admin"))
+    .then(() => window.Materialize.toast('Welcome back!', 3000, 'teal'))
+    .catch(() => window.Materialize.toast('Wrong email or password', 3000, 'red'))
   }
 
   render() {
     return (
       <Row className="sign-in-container">
-        <Col s={12} m={5} className="center offset-m3">
-          <p className="flow-text">Heng Lay Sign In</p>
+        <Col s={12} m={6} className="center offset-m3">
+          <h4 style={{marginTop: '5rem'}} className="white-text">Heng Lay Restaurant</h4>
           <form onSubmit={this.props.handleSubmit(this.handleSignInSubmit)}>
-            <Field
-              name="email"
-              component={this.renderInput}
-              label="Email"
-              type="text"
-              />
-            <Field
-              name="password"
-              component={this.renderPWInput}
-              label="Password"
-              type="password"
-              />
-            <Button className={ this.props.invalid ? "disabled" : ""}
-              type="submit"
-              style={{ width: '100%' }}>
-                Sign In
-            </Button>
+            <Card title="Sign In">
+              <Field
+                name="email"
+                component={this.renderInput}
+                label="Email"
+                type="text"
+                />
+              <Field
+                name="password"
+                component={this.renderPWInput}
+                label="Password"
+                type="password"
+                />
+              <Button className={ this.props.invalid ? "disabled" : ""}
+                type="submit"
+                style={{ width: '100%' }}>
+                  Sign In
+              </Button>
+            </Card>
           </form>
         </Col>
       </Row>
