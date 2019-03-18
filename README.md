@@ -7,10 +7,10 @@
 4. thunk
 5. React Materialize
 
-#Server side 
+#Server side: Repo: https://github.com/V4Vince/HengLayRestaurant-Rails.API
 1. Rails API
 2. Postgress
-Repo: https://github.com/V4Vince/HengLayRestaurant-Rails.API
+
 
 #Hosting and file storage
 1. Firebase hosting (client side)
